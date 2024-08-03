@@ -1,0 +1,156 @@
+@import "@mysten/dapp-kit/dist/index.css";
+
+.home-page {
+  @apply flex flex-col items-center justify-center;
+
+  & > .title {
+    @apply text-[28px] sm:text-[46px] font-bold text-[#4DA2FF] mt-12 text-center;
+  }
+
+  & > .infos {
+    @apply px-6 py-4 max-sm:w-[90%] sm:min-w-[400px] mt-8;
+    @apply border-[3px] border-solid border-[#C0E6FF] rounded-2xl;
+    @apply flex flex-col items-center justify-center gap-3;
+
+    & > span {
+      @apply text-[20px];
+    }
+
+    & > .buttons {
+      @apply flex items-center justify-center gap-6;
+      & > button {
+        @apply bg-[#4DA2FF] text-white py-1 px-6 rounded-2xl font-semibold;
+        @apply hover:bg-[#3B8BFF] transition-colors active:bg-[#0c6dff];
+        &.cancel {
+          @apply bg-[#FF4D4D] hover:bg-[#FF3B3B] active:bg-[#ff0c0c];
+        }
+        &:disabled {
+          @apply bg-[#C0E6FF] text-black cursor-not-allowed;
+        }
+      }
+    }
+  }
+  & > .inputs {
+    @apply flex flex-col items-center justify-center gap-6 mt-8 max-sm:w-[90%] sm:min-w-[400px];
+    @apply text-black;
+
+    & > div {
+      @apply w-full flex flex-col items-start justify-center gap-1;
+      & > label {
+        @apply text-[14px] font-semibold text-white;
+      }
+      & > div {
+        @apply w-full flex items-center justify-start gap-3 bg-white rounded-xl pr-3;
+        @apply max-sm:w-full sm:min-w-[300px] sm:max-w-[400px] min-h-[50px];
+
+        & img {
+          @apply cursor-pointer;
+
+          &.copy-icon {
+            @apply w-5 h-5;
+          }
+        }
+        & > span {
+          @apply bg-white py-2 pl-4 text-left rounded-xl !placeholder-black;
+          @apply break-all;
+          @apply inline-flex flex-1;
+        }
+      }
+    }
+  }
+  & > .transfer-all {
+    @apply px-6 py-4 max-sm:w-[90%] sm:min-w-[450px] mt-8;
+    @apply border-[3px] border-solid border-[#C0E6FF] rounded-2xl;
+    @apply flex flex-col items-start justify-start gap-3;
+    @apply max-h-[400px] max-w-[600px];
+
+    & > h2 {
+      @apply font-semibold text-[16px] uppercase;
+    }
+    & > label {
+      @apply text-[14px] font-semibold text-white;
+    }
+    & > textarea {
+      @apply bg-white py-2 px-4 text-left rounded-xl text-black;
+      @apply w-full;
+    }
+    & > button {
+      @apply bg-[#4DA2FF] text-white py-1 px-6 rounded-2xl font-semibold w-full;
+      @apply hover:bg-[#3B8BFF] transition-colors active:bg-[#0c6dff];
+
+      &.error {
+        @apply bg-[#FF4D4D] hover:bg-[#FF3B3B] active:bg-[#ff0c0c];
+      }
+      &:disabled {
+        @apply bg-[#C0E6FF] text-black cursor-not-allowed;
+      }
+    }
+  }
+
+  & > .logs {
+    @apply px-6 py-4 max-sm:w-[90%] sm:min-w-[450px] mt-8;
+    @apply border-[3px] border-solid border-[#C0E6FF] rounded-2xl;
+    @apply flex flex-col items-start justify-start gap-3;
+    @apply max-h-[400px] max-w-[600px];
+
+    & > h2 {
+      @apply font-semibold text-[16px] uppercase;
+    }
+    & > div {
+      @apply w-full flex  justify-between gap-3 flex-col;
+      @apply overflow-y-auto pb-2;
+
+      & > span {
+        @apply flex w-full;
+        & > span {
+          @apply text-[14px] flex whitespace-nowrap;
+        }
+        & > p {
+          @apply text-[14px] break-all;
+
+          &.error {
+            @apply text-red-500;
+          }
+          &.bg-green {
+            @apply bg-green-500 text-white;
+          }
+          &.gray {
+            @apply text-gray-400;
+          }
+          &.blue {
+            @apply text-blue-500;
+          }
+          &.yellow {
+            @apply text-yellow-500;
+          }
+          &.green {
+            @apply text-green-500;
+          }
+        }
+      }
+    }
+    & button {
+      @apply cursor-pointer;
+      @apply text-white py-1 px-6 rounded-2xl font-semibold;
+      @apply bg-[#FF4D4D] hover:bg-[#FF3B3B] active:bg-[#ff0c0c];
+    }
+  }
+
+  & > .how-to-play {
+    @apply px-6 py-4 max-sm:w-[90%] sm:min-w-[450px] mt-8;
+    @apply border-[3px] border-solid border-[#C0E6FF] rounded-2xl;
+    @apply flex flex-col items-center justify-center gap-3;
+
+    & > h2 {
+      @apply font-semibold text-[28px] uppercase;
+    }
+    & > p {
+      @apply text-lg;
+      @apply max-w-[300px] text-center;
+    }
+
+    & > img {
+      @apply w-40 h-40 object-contain bg-contain;
+    }
+  }
+}
