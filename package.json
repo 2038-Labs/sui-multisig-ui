@@ -1,5 +1,5 @@
 {
-  "name": "suiversary-dapp",
+  "name": "multisig-ui",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "format": "prettier --write 'src/**/*.ts'",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -20,6 +21,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
+  "resolutions": {
+    "@mysten/sui.js": "^0.54.1"
+  },
   "devDependencies": {
     "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
     "@types/react": "^18.3.1",
@@ -30,6 +34,8 @@
     "autoprefixer": "^10.4.19",
     "cssnano": "^7.0.1",
     "eslint": "^8.57.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "postcss": "^8.4.38",
@@ -37,8 +43,36 @@
     "postcss-import": "^16.1.0",
     "postcss-nesting": "^12.1.2",
     "postcss-simple-vars": "^7.0.1",
+    "prettier": "^2.3.2",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5",
     "vite": "^5.2.0"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": true,
+    "singleQuote": true,
+    "useTabs": false
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "warn"
+      ],
+      "@typescript-eslint/no-explicit-any": "off"
+    }
   }
 }
