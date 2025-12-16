@@ -11,7 +11,7 @@ module.exports = {
   plugins: ['react-refresh', require('daisyui')],
   rules: {
     'react-refresh/only-export-components': [
-      'warn',
+      'error',
       { allowConstantExport: true },
     ],
   },

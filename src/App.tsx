@@ -1,24 +1,25 @@
-import { FC, useState } from "react";
-import "./App.css";
-import SignForm from "./components/forms/signForm";
-import WalletButton from "./components/walletButton";
+import { FC, lazy, Suspense, useState } from 'react';
+import WalletButton from './components/walletButton';
+import './App.css';
 
-type ActionType = 'sign' | 'send' | 'none'
+const SignForm = lazy(() => import('./components/forms/signForm'));
+const SendTxForm = lazy(() => import('./components/forms/sendTx'));
+
+type ActionType = 'sign' | 'send';
+const DEFAULT_ACTION: ActionType = 'sign';
 
 type MyAppProps = {};
 const MyApp: FC<MyAppProps> = () => {
-  const [action, setAction] = useState<ActionType>('none')
+  const [action, setAction] = useState<ActionType>(DEFAULT_ACTION);
 
   const Form = () => {
     switch (action) {
       case 'sign':
         return <SignForm />;
       case 'send':
-        return <div className="mt-5">(COMING SOON!)</div>;
-      case 'none':
-        return <div></div>;
+        return <SendTxForm />;
     }
-  }
+  };
 
   return (
     <div className="lg:w-1/2 mx-auto">
@@ -26,14 +27,22 @@ const MyApp: FC<MyAppProps> = () => {
         <WalletButton />
       </div>
       <div className="mt-4 p-4">
-        <select className="select select-info max-w-xs" onChange={(e) => {
-          setAction(e.currentTarget.value as ActionType)
-        }} defaultValue={"none"} value={action}>
-          <option disabled selected value={"none"}>Select tools</option>
-          <option value={"sign"}>Sign transaction bytes</option>
-          <option value={"send"}>Send transaction multisig</option>
+        <select
+          className="select select-info max-w-xs"
+          onChange={(e) => {
+            setAction(e.currentTarget.value as ActionType);
+          }}
+          value={action}
+        >
+          <option disabled value="none">
+            Select tools
+          </option>
+          <option value="sign">Sign transaction bytes</option>
+          <option value="send">Send transaction multisig</option>
         </select>
-        <Form />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Form />
+        </Suspense>
       </div>
     </div>
   );

@@ -11,18 +11,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mysten/dapp-kit": "^0.13.0",
-    "@mysten/sui.js": "^0.52.0",
-    "@scallop-io/sui-kit": "^0.52.0",
+    "@mysten/dapp-kit": "^0.19.11",
+    "@mysten/sui": "^1.45.2",
     "@tanstack/react-query": "^5.51.21",
     "bignumber.js": "^9.1.2",
     "classnames": "^2.5.1",
     "daisyui": "^4.12.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  },
-  "resolutions": {
-    "@mysten/sui.js": "^0.54.1"
   },
   "devDependencies": {
     "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
@@ -50,7 +46,7 @@
   },
   "prettier": {
     "trailingComma": "es5",
-    "tabWidth": 4,
+    "tabWidth": 2,
     "semi": true,
     "singleQuote": true,
     "useTabs": false
@@ -73,6 +69,20 @@
         "warn"
       ],
       "@typescript-eslint/no-explicit-any": "off"
+    }
+  },
+  "pnpm": {
+    "overrides": {
+      "braces@<3.0.3": ">=3.0.3",
+      "micromatch@<4.0.8": ">=4.0.8",
+      "rollup@>=4.0.0 <4.22.4": ">=4.22.4",
+      "nanoid@<3.3.8": ">=3.3.8",
+      "esbuild@<=0.24.2": ">=0.25.0",
+      "@babel/runtime@<7.26.10": ">=7.26.10",
+      "base-x@=4.0.0": ">=4.0.1",
+      "cross-spawn@>=7.0.0 <7.0.5": ">=7.0.5",
+      "brace-expansion@>=1.0.0 <=1.1.11": ">=1.1.12",
+      "brace-expansion@>=2.0.0 <=2.0.1": ">=2.0.2"
     }
   }
 }
