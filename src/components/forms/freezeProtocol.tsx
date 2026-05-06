@@ -1,8 +1,11 @@
 import { useSignAndExecuteTransaction } from '@mysten/dapp-kit';
 import { Transaction } from '@mysten/sui/transactions';
 import { useCallback, useRef, useState } from 'react';
-import type { SuiTransactionBlockResponse } from '@mysten/sui/client';
 import { useScallopProtocolPkgId } from '../../hooks/useScallop';
+
+type ExecuteResponse = Awaited<
+  ReturnType<ReturnType<typeof useSignAndExecuteTransaction>['mutateAsync']>
+>;
 
 // these two objects ID will never change! so it's safe to set it as constant
 const MARKET_OBJECT = '0xa757975255146dc9686aa823b7838b507f315d704f428cbadad2f4ea061939d9';
@@ -11,9 +14,7 @@ const VERSION_OBJECT_ID = '0x07871c4b3c847a0f674510d4978d5cf6f960452795e8ff6f189
 interface Props {}
 const FreezeProtocolForm = ({}: Props) => {
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState<
-    SuiTransactionBlockResponse | undefined
-  >();
+  const [response, setResponse] = useState<ExecuteResponse | undefined>();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const { mutateAsync: signAndExecute } = useSignAndExecuteTransaction();
   const {
@@ -116,7 +117,7 @@ const FreezeProtocolForm = ({}: Props) => {
         </form>
       </dialog>
 
-      {response && (
+      {response && 'digest' in response && (
         <div className="p-4 mt-6">
           <div className="mockup-code">
             <pre data-prefix="$">
