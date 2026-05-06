@@ -4,8 +4,11 @@ import './App.css';
 
 const SignForm = lazy(() => import('./components/forms/signForm'));
 const SendTxForm = lazy(() => import('./components/forms/sendTx'));
+const FreezeProtocolForm = lazy(
+  () => import('./components/forms/freezeProtocol')
+);
 
-type ActionType = 'sign' | 'send';
+type ActionType = 'sign' | 'send' | 'freeze';
 const DEFAULT_ACTION: ActionType = 'sign';
 
 type MyAppProps = {};
@@ -18,6 +21,8 @@ const MyApp: FC<MyAppProps> = () => {
         return <SignForm />;
       case 'send':
         return <SendTxForm />;
+      case 'freeze':
+        return <FreezeProtocolForm />;
     }
   };
 
@@ -39,6 +44,7 @@ const MyApp: FC<MyAppProps> = () => {
           </option>
           <option value="sign">Sign transaction bytes</option>
           <option value="send">Send transaction multisig</option>
+          <option value="freeze">Freeze protocol</option>
         </select>
         <Suspense fallback={<div>Loading...</div>}>
           <Form />
